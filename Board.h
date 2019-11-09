@@ -48,5 +48,11 @@ public:
 	//updates the board with a move and returns
 	//state at the corresponding cell
 	EnemyPiece makeMove(const Move &move);
+	//returns false if piece goes off board
+	//or overlaps with another piece
+	bool isLegal(const Move &move, const Move &move) const noexcept;
+	//place a piece on the board
+	//must check if the move is legal
+	PlayerPiece placePiece(const Move &move, const Move &move, PlayerPiece what) const noexcept;
 };
 #endif

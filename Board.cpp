@@ -8,7 +8,6 @@ void Board::reset() noexcept{
 		= EnemyPiece::EMPTY;
 	}
 	totalMoves = 0;
-
 }
 
 //verify a move is withing range and not targeting an
@@ -133,5 +132,4 @@ EnemyPiece Board::makeMove(const Move &move){
 		return m_tracking2[idx];
 	}	
 }
-
 
