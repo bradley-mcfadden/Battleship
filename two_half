@@ -1,0 +1,217 @@
+"
+
+
+
+
+
+
+
+
+tp:
+
+ke it 
+
+ple)
+
+
+
+
+
+
+ld have 
+
+ollowing 
+
+
+
+
+
+
+ the 
+
+
+
+
+
+
+he Board 
+
+
+
+
+
+s the 
+
+
+
+
+ISER, 
+
+
+the Board 
+
+
+
+
+
+n integer. 
+re the new 
+fore a 
+t type.
+
+
+
+
+he board. 
+0 (10x10) 
+eces (both 
+ional 
+e used for
+r functions:
+
+ board by 
+
+
+markers 
+
+
+r is 1, 
+erPiece, and 
+ayer is 2,
+
+
+ove 
+the 
+
+
+ whether 
+
+
+
+
+
+unctionality 
+ of the player, 
+he player. The
+:
+
+yer class 
+
+
+ual function 
+
+
+
+
+
+
+
+member function 
+ocation where 
+hould
+
+
+
+
+
+
+ the class 
+ for all 
+e 
+ ensures that 
+signed. The 
+cond computer 
+te the names 
+t is increased 
+created. If 
+go back to ‘A’. 
+
+
+ generates the 
+structor.
+
+
+
+
+er. Its 
+ber function 
+ player 
+. The random 
+e in <random>,
+
+
+
+
+
+ntains two 
+nd a Board 
+unctions:
+
+ an empty 
+
+
+amically 
+
+
+f the two 
+r. For a 
+r's name.
+yers 
+
+
+the 
+
+
+nction 
+s the makeMove 
+he
+ makeMove 
+to the user 
+ an enemy 
+
+
+ame and 
+
+
+has yet won
+
+
+
+
+bject and 
+play() and 
+file.
+
+
+
+
+t 23:59 pm.
+ up to a 
+
+
+
+
+
+standard
+ The 
+d must be 
+*.h or 
+ect code. 
+e 
+ contain 
+e name 
+
+
+ste the 
+o "zip". 
+ type. No files
+) 
+
+
+lowing 
+
+
+
+
+
+
