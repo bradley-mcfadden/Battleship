@@ -2,13 +2,12 @@ COSC2947 E "Object Oriented Programming Using
 C++" 
 ------------------------------------------------- 
 
-Programming Project =================== 
+Programming Project 
+=================== 
 
 
 Task 
 ---- 
-
-
 Develop a program to play the game BattleShip 
 (http: //en.wikipedia.org/wiki/Battleship_(game)) 
 
@@ -20,7 +19,6 @@ simple) player is required for the project.
 
 Implementation 
 -------------- 
-
 The program uses 
 several classes. Each class should have its own 
 source code and header file. Equip the header 
@@ -35,8 +33,7 @@ EnemyPiece is an
 enumeration type that represents the possible 
 contents of a square on the board. A possible 
 definition is 
-enum class EnemyPiece {HIT, MISS, 
-EMPTY}; 
+enum class EnemyPiece {HIT, MISS, EMPTY}; 
 
 EnemyPiece can be defined in the header 
 file of the Board class. 
@@ -44,7 +41,6 @@ file of the Board class.
 
 PlayerPiece 
 =---------= 
-
 PlayerPiece is an enumeration type that 
 represents the possible contents of a square on 
 the board. 
@@ -54,8 +50,6 @@ PlayerPiece {AIRCRAFT, BATTLESHIP, CRUISER,
 SUBMARINE, PATROL, EMPTY}; 
 PlayerPiece can be 
 defined in the header file of the Board class. 
-
-
 
 Move 
 =--= 
@@ -89,8 +83,7 @@ current board of PlayerPiece, and player two’s
 current board of EnemyPiece. If player is 2, then 
 display the opposite boards. 
 EnemyPiece 
-makeMove(const Move &): Executes the move 
-indicated by the function parameter, and updates 
+makeMove(const Move &): Executes the move indicated by the function parameter, and updates 
 the boards accordingly. 
 bool isLegal(const Move 
 &) const noexcept: Checks whether it is legal to 
@@ -98,7 +91,6 @@ attack the specified location.
 
 Player 
 =----= 
-
 Player is an abstract base class for the common 
 functionality of human and computer players. It 
 stores the name of the player, and an instance of 
@@ -114,7 +106,6 @@ pure virtual function that gets the players move.
 Player has no default constructor. 
 
 HumanPlayer 
-
 =---------= 
 This class is derived from the class 
 Player. The member function makeMove(const 
@@ -124,7 +115,6 @@ should loop until the user enters a valid move,
 per the Board::isLegal function. 
 
 ComputerPlayer 
-
 =------------= 
 This class is an abstract base 
 class derived from the class Player. The class 
@@ -164,24 +154,25 @@ controls the flow of a game. It contains two
 Pointers to Player objects as member variables, 
 and a Board object. The class provides the 
 following member functions: 
+
 Game::Game(): The 
 default constructor initializes an empty board 
 and sets the player pointers to nullptr. 
 
 Game::~Game(): The destructor deallocates any 
 dynamically allocated objects. 
-void 
-selectPlayers(): Prompts the user for each of the 
+
+void selectPlayers(): Prompts the user for each of the 
 two players for the type(human/computer) of the 
 player. For a human player the function also asks 
 for the player's name. The function then creates 
 the objects for the players dynamically. 
 
-Player* 
-nextPlayer() const: The function returns the 
+Player* nextPlayer() const: 
+The function returns the 
 pointer to the player whose move it is. 
-void 
-play(): While isRunning returns true, the 
+
+void play(): While isRunning returns true, the 
 function displays the current player’s boards 
 and invokes the makeMove member function of the 
 player whose move it is. The function then passes 
@@ -204,7 +195,8 @@ its member functions selectPlayers(), play() and
 announceWinner(). Place this function in its own 
 file. 
 
-Due Date -------- 
+Due Date 
+-------- 
 The project is due on 
 Tuesday, December 3, 2019 at 23:59 pm. Late 
 submissions will be penalized by 20% per day up 
