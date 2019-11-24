@@ -7,15 +7,22 @@
 //<param player> Number of this player
 //<return> A valid Move object
 Move HumanPlayer::makeMove(const Board &gameBoard, int player) {
-    Move mine;
-    std::cout << "Enter a move in the form: A2:";
-    std::cin >> mine.col >> mine.row;
-    while (!gameBoard.isLegal(mine, player)){
-    	std::cout << "Make your move(char int:"
-	    << "pair such as A2:";
-	std::cin >> mine.col >> mine.row;
-    }
-    return mine;
+    std::string buffer;
+    std::regex pair("[A-J][1-9]|[A-J]10");
+    while(true){
+        std::cin.ignore(32000, '\n');
+        std::cout << "Enter a move from A-J,1-10, like A10: ";
+        std::getline(std::cin, buffer);
+        
+        if (!std::regex_match(buffer, pair))
+            continue;
+        Move mine;
+        mine.col = buffer[0];
+        mine.row = std::stoi(buffer.substr(1));
+
+        if (gameBoard.isLegal(mine, player))
+            return mine;
+    } 
 }
 
 //Collect a valid position to place a piece
@@ -24,19 +31,27 @@ Move HumanPlayer::makeMove(const Board &gameBoard, int player) {
 //<param which> Which piece is getting put down
 //<param player> The number of this player
 void HumanPlayer::placePiece(Board &gameBoard, PlayerPiece which, int player) {
-    Move start;
-    Move end;
-    std::cout << "Now placing " << (int)which << "st/nd/rd/th"
-	<< " piece.\n" 
-        << "Enter two coords seperated by a comma(A10,B10): ";
-    char temp;
-    std::cin >> start.col >> start.row >> temp
-	>> end.col >> end.row;
-    while(!gameBoard.placePiece(start, end, player, which))
-    {
-	std::cout << "Now placing " << (int)which << "st/nd/rd/th"
-	    << " piece.\n Enter two coords seperated by a comma:";
-	std::cin >> start.col >> start.row >> temp
-	    >> end.col >> end.row;
+    std::string buffer;
+    //please ignore the massive regular expression for matching pairs of coordinates
+    std::regex pair("[A-J][1-9],[A-J][1-9]|[A-J][1-9],[A-J]10|[A-J]10,[A-J][1-9]|[A-J]10,[A-J]10");
+    while(true){
+        std::cout << "Enter two positions, such as A10, seperated by a comma: ";
+        std::cin.ignore(32000, '\n');
+        std::getline(std::cin, buffer);
+
+        if (!std::regex_match(buffer, pair))
+            continue;
+        std::stringstream ss(buffer);
+        Move m1;
+        Move m2;
+        ss >> m1.col;
+        ss >> m1.row;
+        ss.ignore();
+        ss >> m2.col;
+        ss >> m2.row;
+        
+        if (gameBoard.placePiece(m1, m2, player, which))
+            break;
     }
 }
+

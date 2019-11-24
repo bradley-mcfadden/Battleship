@@ -34,7 +34,7 @@ class Board{
     EnemyPiece m_tracking1[BOARD_SIZE]{};
     PlayerPiece m_primary2[BOARD_SIZE]{};
     EnemyPiece m_tracking2[BOARD_SIZE]{};
-
+    
 public:
     //set every board to EMPTY and totalMoves to 0
     Board(){ reset(); }

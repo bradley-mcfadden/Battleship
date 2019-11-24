@@ -6,11 +6,11 @@
 #include "Player.h"
 class ComputerPlayer: public Player{
 protected:
-    const std::string NAME_PREFIX = "Computer ";
     static char m_letter;
 public:
-    ComputerPlayer():Player(NAME_PREFIX + m_letter){
+    ComputerPlayer():Player(std::string("Computer ") + m_letter){
         m_letter = m_letter < 'Z' ? m_letter + 1 : 'Z';
+        std::cout << "Hey roboto, my name: " << m_name << "\n";
     }
 };
 #endif

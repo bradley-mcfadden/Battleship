@@ -57,7 +57,7 @@ void Game::placePieces(){
     m_p1->placePiece(m_game, PlayerPiece::SUBMARINE, 1);
     std::cout << m_p1->getName() << " is placing a Destroyer(length 3).\n";
     m_p1->placePiece(m_game, PlayerPiece::DESTROYER, 1);
-    std::cout << m_p1->getName() << "is placing a Battleship(length 4).\n";
+    std::cout << m_p1->getName() << " is placing a Battleship(length 4).\n";
     m_p1->placePiece(m_game, PlayerPiece::BATTLESHIP, 1);
     std::cout << m_p1->getName() << " is placing a Carrier(length 5).\n";
     m_p1->placePiece(m_game, PlayerPiece::CARRIER, 1);

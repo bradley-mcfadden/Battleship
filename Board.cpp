@@ -75,7 +75,10 @@ void Board::display(int player) const noexcept{
     for (size_t idx = 0; idx < BOARD_SIZE; ++idx){
     	if (idx % 10 == 0)
         	std::cout << (idx / 10 + 1) << '\t';
-	std::cout << (int)p_primary[idx] << '\t';
+        if ((int)p_primary[idx] == 0)
+	    std::cout << (int)p_primary[idx] << '\t';
+        else
+            std::cout << (int)p_primary[idx] << '\t';
 	if (idx % 10 == 9)
 	    std::cout << '\n';
     }
@@ -89,7 +92,10 @@ void Board::display(int player) const noexcept{
     for (size_t idx = 0; idx < BOARD_SIZE; ++idx){
     	if (idx % 10 == 0)
     	    std::cout << (idx / 10 + 1) << '\t';
-	std::cout << (int)e_tracking[idx] << '\t';
+        if ((int)e_tracking[idx] == 0)
+            std::cout << (int)e_tracking[idx] << '\t';
+        else
+            std::cout << (int)e_tracking[idx] << '\t';
 	if (idx % 10 == 9)
 	    std::cout << '\n';
     }
