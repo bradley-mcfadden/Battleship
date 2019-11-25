@@ -35,9 +35,10 @@ void HumanPlayer::placePiece(Board &gameBoard, PlayerPiece which, int player) {
     //please ignore the massive regular expression for matching pairs of coordinates
     std::regex pair("[A-J][1-9],[A-J][1-9]|[A-J][1-9],[A-J]10|[A-J]10,[A-J][1-9]|[A-J]10,[A-J]10");
     while(true){
+        //std::cin.ignore(32000, '\n');
         std::cout << "Enter two positions, such as A10, seperated by a comma: ";
-        std::cin.ignore(32000, '\n');
         std::getline(std::cin, buffer);
+        //std::cin.ignore(32000, '\n');
 
         if (!std::regex_match(buffer, pair))
             continue;
@@ -50,8 +51,10 @@ void HumanPlayer::placePiece(Board &gameBoard, PlayerPiece which, int player) {
         ss >> m2.col;
         ss >> m2.row;
         
-        if (gameBoard.placePiece(m1, m2, player, which))
+        if (gameBoard.placePiece(m1, m2, player, which)){
+            //std::getline(std::cin, buffer);
             break;
+        }
     }
 }
 

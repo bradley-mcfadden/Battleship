@@ -99,6 +99,7 @@ void Board::display(int player) const noexcept{
 	if (idx % 10 == 9)
 	    std::cout << '\n';
     }
+    std::cout << '\n';
 }
 
 //Updates tracking and primary boards after a move
@@ -141,11 +142,13 @@ EnemyPiece Board::makeMove(const Move &move, int player){
 //<return> True if successful, false if not
 bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerPiece piece) noexcept{
     //bounds check player and move parameters
+    std::cerr << move1.col << move1.row << '\n';
+    std::cerr << move2.col << move2.row << '\n';
     if (player > 2 || player < 1)
     	return false;
     if (!(isWithinRange(move1) && isWithinRange(move2)))
     	return false;
-		
+    std::cerr << "move was legal" << player << ',' << (int)piece << '\n';
     //convert moves into integers, then to index
     int x1 = (size_t)(move1.col - 'A');
     int y1 = (move1.row - 1);
@@ -179,45 +182,18 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
     	boatSize = 5;
     	break;
     default:
+        std::cout << "Invalid piece" << '\n';
     	return false;
     }
     if (euclideanDist != boatSize){
-        std::cout << "in Board::placePiece(), incorrect size:" << euclideanDist << " Expected size:" << boatSize << "\n";
+        std::cout << "Incorrect size:" << euclideanDist << " Expected size:" << boatSize << "\n";
+        //std::cerr << "in Board::placePiece(), incorrect size:" << euclideanDist << " Expected size:" << boatSize << "\n";
     	return false;
     }
 
     PlayerPiece *temp;
     temp = (player == 1 ? m_primary1 : m_primary2);
     
-    /*
-    std::cout << "temp:\n";
-    for (size_t i = 0; i < BOARD_SIZE; ++i){
-        if (i % 10 == 9)
-            std::cout << (int)temp[i] << '\n';
-        else
-            std::cout << (int)temp[i] << ", ";
-    }
-    std::cout << "\n";
-    std::cout << "m_primary1:\n";
-    for (size_t i = 0; i < BOARD_SIZE; ++i){
-        if (i % 10 == 9)
-            std::cout << (int)m_primary1[i] << '\n';
-        else
-            std::cout << (int)m_primary1[i] << ", ";
-    }
-    std::cout << "\n";
-    std::cout << "m_primary2:\n";
-    for (size_t i = 0; i < BOARD_SIZE; ++i){
-        if (i % 10 == 9)
-            std::cout << (int)m_primary2[i] << '\n';
-        else
-            std::cout << (int)m_primary2[i] << ", ";
-    }
-    std::cout << "\n";
-    */
-
-    //move up, down, right or left
-    //across the grid when assigning elements
     int step = 0;
     if (idx1 == idx2){
         //std::cerr << "Index one equal to index 2 '\n'";
@@ -234,7 +210,8 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
     //update each grid cell with new piece
     for (size_t i = idx1; i != idx2 + step; i += step){
     	if (temp[i] != PlayerPiece::EMPTY){
-            std::cout << "Sorry, your input overlaps at the inputted coordinates. " << '\n'; 
+            std::cout << "Sorry, there is overlap at the inputted coordinates. " << '\n'; 
+            //std::cerr << "Input overlaps somewhere. " << '\n';
 	    return false;
         }
 	temp[i] = piece;
@@ -258,7 +235,8 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
 	if (idx % 10 == 9)
             std::cout << '\n';
     }
-
+    std::cout << '\n';
+    //std::cerr << "Reached end of function" << '\n';
     return true;
 }
 

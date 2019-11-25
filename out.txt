@@ -1,0 +1,3 @@
+A10
+B10
+move was legal1,1

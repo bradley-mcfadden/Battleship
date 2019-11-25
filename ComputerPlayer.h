@@ -10,7 +10,7 @@ protected:
 public:
     ComputerPlayer():Player(std::string("Computer ") + m_letter){
         m_letter = m_letter < 'Z' ? m_letter + 1 : 'Z';
-        std::cout << "Hey roboto, my name: " << m_name << "\n";
+        //std::cout << "Hey roboto, my name: " << m_name << "\n";
     }
 };
 #endif

@@ -34,7 +34,7 @@ void Game::selectPlayers(){
     std::string name;
     if (p1_type == 1){
         std::cout << "Enter a name for player one: ";
-        std::cin >> name;
+        std::getline(std::cin, name);
         m_p1 = new HumanPlayer(name);
     } else {
         m_p1 = new RandomPlayer();
@@ -42,11 +42,12 @@ void Game::selectPlayers(){
 
     if (p2_type == 1){
         std::cout << "Enter a name for player two: ";
-        std::cin >> name;
+        std::getline(std::cin, name);
         m_p2 = new HumanPlayer(name);
     } else {
         m_p2 = new RandomPlayer();
     }
+    std::cout << '\n';
 }
 
 //Place the pieces for each player and ensure they are valid
@@ -91,12 +92,14 @@ void Game::play(){
         int player = m_p1Turn == 1 ? 1 : 2;
         m_game.display(player); 
         std::string name = m_p1Turn == 1 ? m_p1->getName() : m_p2->getName();
-        std::cout << "It's " << name << "'s turn.\n";
+        std::cout << '\n' << "It's " << name << "'s turn.\n";
         EnemyPiece result;
-        if (player == 1)
+        if (player == 1){
             result = m_game.makeMove(m_p1->makeMove(m_game, player), player);
-        else
+        } else {
+        
             result = m_game.makeMove(m_p2->makeMove(m_game, player), player);
+        }
         if (result == EnemyPiece::HIT){
             std::cout << "That move was a hit!\n";
             player == 1 ? ++m_p1Hits : ++m_p2Hits;
@@ -123,7 +126,7 @@ void Game::announceWinner(){
         std::cout << "announceWinner called without a winner.";
         return;
     }
-    std::cout << "The winner is: " << name << "!\n  Congratulations!\n";
+    std::cout << "The winner is: " << name << "!\nCongratulations!\n";
 }
 
 //Returns false if either player has not got 17( 2 + 3 + 3 + 4 + 5 )
