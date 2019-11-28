@@ -37,7 +37,7 @@ bool Board::isLegal(const Move &move, int player) const noexcept{
     return true;
 }
 
-//Output player's board and enemy's tracking board 
+//Output player's board and enemy's tracking board
 //to std::out
 //<param player> The player whose primary to print
 //<notes> the display of each piece is done using
@@ -83,7 +83,7 @@ void Board::display(int player) const noexcept{
 	    std::cout << '\n';
     }
 
-    std::cout << "Player " << (player % 2 + 1) 
+    std::cout << "Player " << (player % 2 + 1)
 	<< "'s tracking board:\n" << '\t';
     for (char col = 'A'; col <= 'J'; ++col)
     	std::cout << col << '\t';
@@ -130,7 +130,7 @@ EnemyPiece Board::makeMove(const Move &move, int player){
 	    m_tracking2[idx]= EnemyPiece::MISS;
 	}
 	return m_tracking2[idx];
-    }	
+    }
 }
 
 //Take in two moves as the start and end point of a i
@@ -138,17 +138,17 @@ EnemyPiece Board::makeMove(const Move &move, int player){
 //<param move1> Start of the piece
 //<param move2> End of the piece
 //<param player> Which player is placing the piece?
-//<param piece> Which piece 
+//<param piece> Which piece
 //<return> True if successful, false if not
 bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerPiece piece) noexcept{
     //bounds check player and move parameters
-    std::cerr << move1.col << move1.row << '\n';
-    std::cerr << move2.col << move2.row << '\n';
+    //std::cerr << move1.col << move1.row << '\n';
+    //std::cerr << move2.col << move2.row << '\n';
     if (player > 2 || player < 1)
     	return false;
     if (!(isWithinRange(move1) && isWithinRange(move2)))
     	return false;
-    std::cerr << "move was legal" << player << ',' << (int)piece << '\n';
+    //std::cerr << "move was legal" << player << ',' << (int)piece << '\n';
     //convert moves into integers, then to index
     int x1 = (size_t)(move1.col - 'A');
     int y1 = (move1.row - 1);
@@ -159,7 +159,7 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
     int y2 = (move2.row - 1);
     size_t idx2 = x2 + y2 * 10;
     //std::cerr << "x2: " << x2 << " y2: " << y2 << " index2: " << idx2 << '\n';
-	
+
     //determine the distance between both points
     //and the size of the boat to place
     //std::cerr << "Debug: x1 - x2 + y1 - y2: " << (x1-x2+y1-y2) << '\n';
@@ -193,7 +193,7 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
 
     PlayerPiece *temp;
     temp = (player == 1 ? m_primary1 : m_primary2);
-    
+
     int step = 0;
     if (idx1 == idx2){
         //std::cerr << "Index one equal to index 2 '\n'";
@@ -210,7 +210,7 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
     //update each grid cell with new piece
     for (size_t i = idx1; i != idx2 + step; i += step){
     	if (temp[i] != PlayerPiece::EMPTY){
-            std::cout << "Sorry, there is overlap at the inputted coordinates. " << '\n'; 
+            std::cout << "Sorry, there is overlap at the inputted coordinates. " << '\n';
             //std::cerr << "Input overlaps somewhere. " << '\n';
 	    return false;
         }
