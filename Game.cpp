@@ -75,7 +75,7 @@ void Game::placePieces(){
     m_p2->placePiece(m_game, PlayerPiece::CARRIER, 2);
 }
 
-//Returns a pointer to the player 
+//Returns a pointer to the player
 //whose move it currently is
 //<return> Player* of player whose turn it is
 Player* Game::nextPlayer() const{
@@ -90,14 +90,14 @@ Player* Game::nextPlayer() const{
 void Game::play(){
     while (isRunning()){
         int player = m_p1Turn == 1 ? 1 : 2;
-        m_game.display(player); 
+        m_game.display(player);
         std::string name = m_p1Turn == 1 ? m_p1->getName() : m_p2->getName();
         std::cout << '\n' << "It's " << name << "'s turn.\n";
         EnemyPiece result;
         if (player == 1){
             result = m_game.makeMove(m_p1->makeMove(m_game, player), player);
         } else {
-        
+
             result = m_game.makeMove(m_p2->makeMove(m_game, player), player);
         }
         if (result == EnemyPiece::HIT){
@@ -114,13 +114,10 @@ void Game::play(){
 
 //If there is a winner, announce them with their associated name
 void Game::announceWinner(){
-    int winner;
     std::string name;
     if (m_p1Hits == 17){
-        winner = 1;
         name = m_p1->getName();
     }else if (m_p2Hits == 17){
-        winner = 2;
         name = m_p2->getName();
     }else{
         std::cout << "announceWinner called without a winner.";
