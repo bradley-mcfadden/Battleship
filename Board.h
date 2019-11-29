@@ -3,6 +3,15 @@
 
 #ifndef BOARD_H
 #define BOARD_H
+
+#define RED "\033[31m"
+#define BLUE "\033[32m"
+#define GREEN "\033[34m"
+#define CYAN "\033[36m"
+
+#define INVERT "\033[7m"
+#define RESET "\033[0m"
+
 #include <iostream>
 #include <algorithm>
 #include <cmath> //For std::abs
@@ -15,8 +24,8 @@ typedef CharInt Move;
 
 enum class EnemyPiece{
     EMPTY = 0,
-    HIT = 1,
-    MISS = 2
+    HIT = 1, // GREEN
+    MISS = 2 // BLUE
 };
 
 enum class PlayerPiece{

@@ -17,7 +17,7 @@ Game::~Game(){
 void Game::selectPlayers(){
     size_t p1_type;
     do {
-        std::cout << "Enter the type for player one"
+        std::cout << RESET << "Enter the type for player one"
             << "(1-human, 2-comp): ";
         std::cin >> p1_type;
         std::cin.ignore(30000, '\n');
@@ -25,7 +25,7 @@ void Game::selectPlayers(){
 
     size_t p2_type;
     do {
-        std::cout << "Enter the type for player two"
+        std::cout << RESET << "Enter the type for player two"
             << "(1-human, 2-comp): ";
         std::cin >> p2_type;
         std::cin.ignore(30000, '\n');
@@ -33,7 +33,7 @@ void Game::selectPlayers(){
 
     std::string name;
     if (p1_type == 1){
-        std::cout << "Enter a name for player one: ";
+        std::cout << "Enter a name for player one: " << INVERT;
         std::getline(std::cin, name);
         m_p1 = new HumanPlayer(name);
     } else {
@@ -52,26 +52,26 @@ void Game::selectPlayers(){
 
 //Place the pieces for each player and ensure they are valid
 void Game::placePieces(){
-    std::cout << m_p1->getName() << " is placing a Patrol Boat(length 2).\n";
+    std::cout << INVERT << m_p1->getName() << RESET<< " is placing a Patrol Boat(length 2).\n";
     m_p1->placePiece(m_game, PlayerPiece::PATROL_BOAT, 1);
-    std::cout << m_p1->getName() << " is placing a Submarine(length 3).\n";
+    std::cout << INVERT << m_p1->getName() << RESET << " is placing a Submarine(length 3).\n";
     m_p1->placePiece(m_game, PlayerPiece::SUBMARINE, 1);
-    std::cout << m_p1->getName() << " is placing a Destroyer(length 3).\n";
+    std::cout << INVERT << m_p1->getName() << RESET << " is placing a Destroyer(length 3).\n";
     m_p1->placePiece(m_game, PlayerPiece::DESTROYER, 1);
-    std::cout << m_p1->getName() << " is placing a Battleship(length 4).\n";
+    std::cout << INVERT << m_p1->getName() << RESET << " is placing a Battleship(length 4).\n";
     m_p1->placePiece(m_game, PlayerPiece::BATTLESHIP, 1);
-    std::cout << m_p1->getName() << " is placing a Carrier(length 5).\n";
+    std::cout << INVERT << m_p1->getName() << RESET << " is placing a Carrier(length 5).\n";
     m_p1->placePiece(m_game, PlayerPiece::CARRIER, 1);
 
-    std::cout << m_p2->getName() << " is placing a Patrol Boat(length 2).\n";
+    std::cout << INVERT << m_p2->getName() << RESET << " is placing a Patrol Boat(length 2).\n";
     m_p2->placePiece(m_game, PlayerPiece::PATROL_BOAT, 2);
-    std::cout << m_p2->getName() << " is placing a Submarine(length 3).\n";
+    std::cout << INVERT << m_p2->getName() << RESET << " is placing a Submarine(length 3).\n";
     m_p2->placePiece(m_game, PlayerPiece::SUBMARINE, 2);
-    std::cout << m_p2->getName() << " is placing a Destroyer(length 3).\n";
+    std::cout << INVERT << m_p2->getName() << RESET << " is placing a Destroyer(length 3).\n";
     m_p2->placePiece(m_game, PlayerPiece::DESTROYER, 2);
-    std::cout << m_p2->getName() << " is placing a Battkeship(length 4).\n";
+    std::cout << INVERT << m_p2->getName() << RESET << " is placing a Battkeship(length 4).\n";
     m_p2->placePiece(m_game, PlayerPiece::BATTLESHIP, 2);
-    std::cout << m_p2->getName() << " is placing a Carrier(length 5).\n";
+    std::cout << INVERT << m_p2->getName() << RESET << " is placing a Carrier(length 5).\n";
     m_p2->placePiece(m_game, PlayerPiece::CARRIER, 2);
 }
 
@@ -92,7 +92,7 @@ void Game::play(){
         int player = m_p1Turn == 1 ? 1 : 2;
         m_game.display(player);
         std::string name = m_p1Turn == 1 ? m_p1->getName() : m_p2->getName();
-        std::cout << '\n' << "It's " << name << "'s turn.\n";
+        std::cout << '\n' << "It's " << INVERT << name << RESET << "'s turn.\n";
         EnemyPiece result;
         if (player == 1){
             result = m_game.makeMove(m_p1->makeMove(m_game, player), player);
@@ -110,6 +110,7 @@ void Game::play(){
         }
         m_p1Turn = !m_p1Turn;
     }
+    m_game.display(!m_p1Turn+1);
 }
 
 //If there is a winner, announce them with their associated name
@@ -123,7 +124,7 @@ void Game::announceWinner(){
         std::cout << "announceWinner called without a winner.";
         return;
     }
-    std::cout << "The winner is: " << name << "!\nCongratulations!\n";
+    std::cout << "The winner is: " << INVERT << name << RESET << "!\nCongratulations!\n";
 }
 
 //Returns false if either player has not got 17( 2 + 3 + 3 + 4 + 5 )
