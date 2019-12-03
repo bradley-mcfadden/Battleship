@@ -12,5 +12,6 @@ public:
         m_letter = m_letter < 'Z' ? m_letter + 1 : 'Z';
         //std::cout << "Hey roboto, my name: " << m_name << "\n";
     }
+    ~ComputerPlayer() override{};
 };
 #endif

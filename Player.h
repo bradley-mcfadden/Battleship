@@ -13,5 +13,6 @@ public:
     virtual Move makeMove(const Board &gameBoard, int player) = 0;
     virtual void placePiece(Board &gameBoard, PlayerPiece which, int player) = 0;
     const std::string& getName()const noexcept{ return m_name; }
+    virtual ~Player(){};
 };
 #endif

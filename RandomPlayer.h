@@ -17,5 +17,6 @@ public:
     Move makeMove(const Board &gameBoard, int player) override;
     void placePiece(Board &gameBoard, PlayerPiece which, int player) override;
     void reset();
+    ~RandomPlayer() override{};
 };
 #endif

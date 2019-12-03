@@ -66,52 +66,47 @@ void Board::display(int player) const noexcept{
     	std::copy(m_primary2, m_primary2 + BOARD_SIZE, p_primary);
     }
 
+    // Print primary board
     std::cout << "Player " << player << "'s "
-	<< " primary board:\n" << '\t' << RED;
+	<< " primary board:\n" << '\t';
     for (char col = 'A'; col <= 'J'; ++col)
     	std::cout << col << '\t';
-    std::cout << RESET << '\n';
+    std::cout << '\n';
 
     for (size_t idx = 0; idx < BOARD_SIZE; ++idx){
     	if (idx % 10 == 0){
-            std::cout << RED << (idx / 10 + 1) << '\t';
-            std::cout << RESET;
+            std::cout << (idx / 10 + 1) << '\t';
         }
         if ((int)p_primary[idx] == 0)
 	    std::cout << '~' << '\t';
         else
-            std::cout << CYAN << (int)p_primary[idx] << '\t';
+            std::cout << (int)p_primary[idx] << '\t';
 	if (idx % 10 == 9)
 	    std::cout << '\n';
-        std::cout << RESET;
     }
 
+    // Print tracking board
     std::cout << "\nPlayer " << (player % 2 + 1)
-	<< "'s tracking board:\n" << '\t' << RED;
+	<< "'s tracking board:\n" << '\t';
     for (char col = 'A'; col <= 'J'; ++col)
     	std::cout << col << '\t';
-    std::cout << RESET << '\n';
+    std::cout << '\n';
 
     for (size_t idx = 0; idx < BOARD_SIZE; ++idx){
     	if (idx % 10 == 0){
-    	    std::cout << RED << (idx / 10 + 1) << '\t';
-            std::cout << RESET;
-        } 
+    	    std::cout << (idx / 10 + 1) << '\t';
+        }
 
         switch(e_tracking[idx]){
         case EnemyPiece::EMPTY:
             std::cout << '~' << '\t';
             break;
         case EnemyPiece::HIT:
-            std::cout << GREEN << (int)e_tracking[idx] << '\t';
-            std::cout << RESET;
-            break;
         case EnemyPiece::MISS:
-            std::cout << BLUE << (int)e_tracking[idx] << '\t';
-            std::cout << RESET;
+            std::cout << (int)e_tracking[idx] << '\t';
             break;
         }
-	 
+
 	if (idx % 10 == 9)
             std::cout << '\n';
     }
@@ -239,23 +234,22 @@ bool Board::placePiece(const Move &move1, const Move& move2, int player, PlayerP
     }
 
     std::cout << "Player " << player << "'s "
-	<< " updated primary board:\n" << RED << '\t';
+	<< " updated primary board:\n" << '\t';
     for (char col = 'A'; col <= 'J'; ++col)
     	std::cout << col << '\t';
-    std::cout << RESET << '\n';
+    std::cout << '\n';
 
     for (size_t idx = 0; idx < BOARD_SIZE; ++idx){
     	if (idx % 10 == 0){
-            std::cout << RED << (idx / 10 + 1) << '\t';
+            std::cout << (idx / 10 + 1) << '\t';
         }
         if ((int)temp[idx] != 0){
-	    std::cout << CYAN << (int)temp[idx] << '\t';
+	    std::cout << (int)temp[idx] << '\t';
         } else {
             std::cout << "~" << '\t';
         }
 	if (idx % 10 == 9)
             std::cout << '\n';
-        std::cout << RESET;
     }
     std::cout << '\n';
     //std::cerr << "Reached end of function" << '\n';

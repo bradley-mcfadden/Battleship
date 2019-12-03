@@ -12,5 +12,6 @@ public:
     HumanPlayer(const std::string name): Player(name){}
     Move makeMove(const Board &game, int player) override;
     void placePiece(Board &gameBoard, PlayerPiece which, int player) override;
+    ~HumanPlayer() override{};
 };
 #endif

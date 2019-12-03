@@ -4,13 +4,13 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#define RED "\033[31m"
-#define BLUE "\033[32m"
-#define GREEN "\033[34m"
-#define CYAN "\033[36m"
+// #define RED "\033[31m"
+// #define BLUE "\033[32m"
+// #define GREEN "\033[34m"
+// #define CYAN "\033[36m"
 
-#define INVERT "\033[7m"
-#define RESET "\033[0m"
+// #define INVERT "\033[7m"
+// #define RESET "\033[0m"
 
 #include <iostream>
 #include <algorithm>
